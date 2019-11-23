@@ -1,0 +1,67 @@
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\Demo.exe
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\Demo.pdb
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.dll
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.SceneGraph.dll
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.WinForms.dll
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.pdb
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.xml
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.SceneGraph.pdb
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.SceneGraph.xml
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.WinForms.pdb
+E:\Teaching\Do hoa may tinh\Demo\Demo\bin\Debug\SharpGL.WinForms.xml
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.Form1.resources
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.exe
+E:\Teaching\Do hoa may tinh\Demo\Demo\obj\Debug\Demo.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.exe
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\Demo.exe
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\Demo.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.dll
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.SceneGraph.dll
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.WinForms.dll
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.xml
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.SceneGraph.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.SceneGraph.xml
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.WinForms.pdb
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\bin\Debug\SharpGL.WinForms.xml
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.Form1.resources
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+E:\Teaching\Do hoa may tinh\DemoBT1\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\Demo.exe.config
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.exe
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.pdb
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\Demo.exe
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\Demo.pdb
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.pdb
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.xml
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.SceneGraph.pdb
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.SceneGraph.xml
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.WinForms.pdb
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\bin\Debug\SharpGL.WinForms.xml
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.Form1.resources
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+G:\Disk E2\Teaching\Do hoa may tinh\MyTutorial\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\Demo.exe.config
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.exe
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.pdb
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\Demo.exe
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\Demo.pdb
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.pdb
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.xml
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.SceneGraph.pdb
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.SceneGraph.xml
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.WinForms.pdb
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.WinForms.xml
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.csprojResolveAssemblyReference.cache
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.Form1.resources
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.Properties.Resources.resources
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\obj\Debug\Demo.csproj.GenerateResource.Cache
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.dll
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.SceneGraph.dll
+D:\Teaching\DHMT\MyTutorial\Demo\Demo\bin\Debug\SharpGL.WinForms.dll
