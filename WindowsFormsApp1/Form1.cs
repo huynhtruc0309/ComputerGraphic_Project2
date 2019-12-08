@@ -21,7 +21,7 @@ namespace WindowsFormsApp1
             public int z;
         }
         int shShape = 0;
-        
+
         public Form1()
         {
             pointControl.x = pointControl.y = pointControl.z = 0;
@@ -36,26 +36,49 @@ namespace WindowsFormsApp1
             public double eyey;
             public double eyez;
 
+            public double upx;
+            public double upy;
+            public double upz;
+
+            double degree;
+
+            public double centerx;
+            public double centery;
+            public double centerz;
+
             public Camera()
             {
                 eyex = 10;
                 eyey = 10;
                 eyez = 10;
+
             }
-            public void NhinGan(int khoangCach)
+
+            public void NhinGan(double khoangCach)
             {
-                eyex -= khoangCach;
-                eyey -= khoangCach;
-                eyez -= khoangCach;
+                eyex /= khoangCach;
+                eyey /= khoangCach;
+                eyez /= khoangCach;
+
+                /* centerx -= khoangCach;
+                 centery -= khoangCach;
+                 centerz -= khoangCach;*/
             }
-            public void NhinXa(int khoangCach)
+            public void NhinXa(double khoangCach)
             {
-                eyex += khoangCach;
-                eyey += khoangCach;
-                eyez += khoangCach;
+                eyex *= khoangCach;
+                eyey *= khoangCach;
+                eyez *= khoangCach;
+
+                /*centerx += khoangCach;
+                centery += khoangCach;
+                centerz += khoangCach;*/
             }
             public void Ngang(double degree)// xoay quanh z
             {
+
+
+
                 degree = degree * Math.PI / 180;
                 double x = eyex;
                 double y = eyey;
@@ -63,18 +86,68 @@ namespace WindowsFormsApp1
                 eyex = x * Math.Cos(degree) - y * Math.Sin(degree);
                 eyey = x * Math.Sin(degree) + y * Math.Cos(degree);
 
+
+
             }
+
             public void Doc(double degree)// xoay quanh x
             {
-                degree = degree * Math.PI / 180;
-                double z = eyez;
-                double y = eyey;
+                //double t = (eyex * Math.Abs(eyex) + eyez * Math.Abs(eyez)) / Math.Sqrt(eyex * eyex + eyey * eyey + eyez * eyez) / Math.Sqrt(eyex * eyex + eyez * eyez);
 
-                eyez = y * Math.Sin(degree) + z * Math.Cos(degree);
-                eyey = y * Math.Cos(degree) - z * Math.Sin(degree);
+                double x = 0, z = 0, y = 0;
+                if (eyex <= 1 && eyey <= 1)
+                {
+                    x = 0;
+                }
+
+                int flag = 1;
+                //if(eyex <=0 )flag = -1;
+                double t = (1 * eyex) / Math.Sqrt(eyex * eyex + eyey * eyey);
+                double alpha = Math.Acos(t);
+
+
+
+                //double sina = Math.Sqrt(1 - cosa * cosa);
+                if ((eyex >= 0 && eyey >= 0 || eyex < 0 && eyey >= 0))
+                {
+                    if (flag == 1)
+                        alpha = 2 * Math.PI - alpha;
+                }
+
+                x = eyex;
+                y = eyey;
+
+
+                eyex = x * Math.Cos(alpha) - y * Math.Sin(alpha);
+                eyey = x * Math.Sin(alpha) + y * Math.Cos(alpha);
+
+
+
+
+                //quay quanh y
+                degree = degree * Math.PI / 180;
+                z = eyez;
+                x = eyex;
+
+                eyex = x * Math.Cos(degree) + z * Math.Sin(degree);
+                eyez = -x * Math.Sin(degree) + z * Math.Cos(degree);
+
+                alpha = -alpha;
+
+                x = eyex;
+                y = eyey;
+
+
+                eyex = x * Math.Cos(alpha) - y * Math.Sin(alpha);
+                eyey = x * Math.Sin(alpha) + y * Math.Cos(alpha);
+
+
+
             }
+
+
         }
-       
+
         public abstract class Shape
         {
             public Point3d Center;
@@ -323,8 +396,8 @@ namespace WindowsFormsApp1
                 gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 1.0);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z + Radius);
-                gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z + Radius);
-                gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z - Radius);
+                gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z + Radius);
+                gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z - Radius);
                 gl.End();
 
                 //right
@@ -479,7 +552,8 @@ namespace WindowsFormsApp1
             }
         }
 
-        public class pyrTexture : Shape {
+        public class pyrTexture : Shape
+        {
             Texture textureObj;
             string filepath;
 
@@ -506,7 +580,7 @@ namespace WindowsFormsApp1
                 InitPoint();
                 gl.Enable(OpenGL.GL_TEXTURE_2D);
                 textureObj.Bind(gl);
-                
+
                 //đáy
                 gl.Begin(OpenGL.GL_QUADS);
                 gl.Color(1.0, 1.0, 1.0, 0.0);
@@ -566,7 +640,7 @@ namespace WindowsFormsApp1
                 gl.Disable(OpenGL.GL_TEXTURE_2D);
             }
         }
-        
+
         private int numOfObject = 0;
         private int numOfCube = 0;
         private int numOfPyr = 0;
@@ -586,7 +660,7 @@ namespace WindowsFormsApp1
         {
             gl.LineWidth(1.0f);
             int size = Radius * 4;
-            for(int i = 0; i < size; i++)
+            for (int i = 0; i < size; i++)
             {
                 gl.Begin(OpenGL.GL_LINES);
                 gl.Color(1.0, 1.0, 1.0, 1.0);
@@ -659,26 +733,26 @@ namespace WindowsFormsApp1
             gl.Perspective(60, openGLControl1.Width / openGLControl1.Height, 1.0, 10000.0);
             //gl.LoadIdentity();
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
-            gl.LookAt(camera.eyex,camera.eyey,camera.eyez,0, 0, 0,0, 0, 1);
+            gl.LookAt(camera.eyex, camera.eyey, camera.eyez, 0, 0, 0, 0, 0, 1);
         }
 
         private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs args)
         {
             OpenGL gl = openGLControl1.OpenGL;
-            
+
             gl.MatrixMode(OpenGL.GL_MODELVIEW);
             gl.LoadIdentity();
-            gl.LookAt(camera.eyex, camera.eyey, camera.eyez, 0, 0, 0, 0, 0, 1);
-            
+            gl.LookAt(camera.eyex, camera.eyey, camera.eyez, camera.centerx, camera.centery, camera.centerz, 0, 0, 1);
+
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
-            
+
             switch (shShape)
             {
                 case 1: object3D[numOfObject] = new cube(); break;
                 case 2: object3D[numOfObject] = new Pyramid(); break;
                 case 3: object3D[numOfObject] = new LangTru(); break;
                 case 4: object3D[numOfObject] = new cubTexture(gl); break;
-                case 5: object3D[numOfObject] = new pyrTexture(gl);break;
+                case 5: object3D[numOfObject] = new pyrTexture(gl); break;
                 default: break;
             }
 
@@ -700,12 +774,12 @@ namespace WindowsFormsApp1
 
         private void openGLControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Z) camera.NhinGan(1);
-            if (e.KeyCode == Keys.X) camera.NhinXa(1);
+            if (e.KeyCode == Keys.Z) camera.NhinGan(1.05);
+            if (e.KeyCode == Keys.X) camera.NhinXa(1.05);
             if (e.KeyCode == Keys.A) camera.Ngang(5);
             if (e.KeyCode == Keys.D) camera.Ngang(-5);
-            if (e.KeyCode == Keys.S) camera.Doc(-5);
-            if (e.KeyCode == Keys.W) camera.Doc(5);
+            if (e.KeyCode == Keys.S) camera.Doc(5);
+            if (e.KeyCode == Keys.W) camera.Doc(-5);
         }
 
         private void bt_cube_Click(object sender, EventArgs e)
@@ -724,7 +798,7 @@ namespace WindowsFormsApp1
             shShape = 2;
             lb_NameObject.Items.Add("Pyramid " + numOfPyr);
         }
-        
+
         private void bt_LangTru_Click(object sender, EventArgs e)
         {
             numOfObject += 1;
