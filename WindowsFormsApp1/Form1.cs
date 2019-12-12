@@ -76,18 +76,12 @@ namespace WindowsFormsApp1
             }
             public void Ngang(double degree)// xoay quanh z
             {
-
-
-
                 degree = degree * Math.PI / 180;
                 double x = eyex;
                 double y = eyey;
 
                 eyex = x * Math.Cos(degree) - y * Math.Sin(degree);
                 eyey = x * Math.Sin(degree) + y * Math.Cos(degree);
-
-
-
             }
 
             public void Doc(double degree)// xoay quanh x
@@ -104,9 +98,7 @@ namespace WindowsFormsApp1
                 //if(eyex <=0 )flag = -1;
                 double t = (1 * eyex) / Math.Sqrt(eyex * eyex + eyey * eyey);
                 double alpha = Math.Acos(t);
-
-
-
+                
                 //double sina = Math.Sqrt(1 - cosa * cosa);
                 if ((eyex >= 0 && eyey >= 0 || eyex < 0 && eyey >= 0))
                 {
@@ -116,14 +108,10 @@ namespace WindowsFormsApp1
 
                 x = eyex;
                 y = eyey;
-
-
+                
                 eyex = x * Math.Cos(alpha) - y * Math.Sin(alpha);
                 eyey = x * Math.Sin(alpha) + y * Math.Cos(alpha);
-
-
-
-
+                
                 //quay quanh y
                 degree = degree * Math.PI / 180;
                 z = eyez;
@@ -136,13 +124,9 @@ namespace WindowsFormsApp1
 
                 x = eyex;
                 y = eyey;
-
-
+                
                 eyex = x * Math.Cos(alpha) - y * Math.Sin(alpha);
                 eyey = x * Math.Sin(alpha) + y * Math.Cos(alpha);
-
-
-
             }
 
 
@@ -179,7 +163,6 @@ namespace WindowsFormsApp1
             public Point3d A, B, C, D, E, F, G, H;
             public cube() : base()
             {
-
             }
             public void initPoint()
             {
@@ -220,6 +203,9 @@ namespace WindowsFormsApp1
             {
                 initPoint();
                 base.drawObject(gl);
+                gl.Enable(OpenGL.GL_BLEND);
+                gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+
                 // đỉnh
                 gl.Begin(OpenGL.GL_QUADS);//GL_QUADS là tứ giác
                 gl.Color(color.R / 255.0, color.G / 255.0, color.B / 255.0, 1.0);
@@ -228,11 +214,10 @@ namespace WindowsFormsApp1
                 gl.Vertex(C.x, C.y, C.z);
                 gl.Vertex(D.x, D.y, D.z);
                 gl.End();
-
-                //đáy
-
+                
+                // đáy
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 1.0);
+                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 0.9);
                 gl.Vertex(E.x, E.y, E.z);
                 gl.Vertex(F.x, F.y, F.z);
                 gl.Vertex(G.x, G.y, G.z);
@@ -242,7 +227,7 @@ namespace WindowsFormsApp1
                 // mặt trước
 
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 1.0);
+                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 0.9);
                 gl.Vertex(A.x, A.y, A.z);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(F.x, F.y, F.z);
@@ -252,7 +237,7 @@ namespace WindowsFormsApp1
 
                 //sau
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 1.0);
+                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 0.9);
                 gl.Vertex(D.x, D.y, D.z);
                 gl.Vertex(C.x, C.y, C.z);
                 gl.Vertex(G.x, G.y, G.z);
@@ -261,7 +246,7 @@ namespace WindowsFormsApp1
 
                 //trái
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 1.0);
+                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 0.9);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(C.x, C.y, C.z);
                 gl.Vertex(G.x, G.y, G.z);
@@ -270,7 +255,7 @@ namespace WindowsFormsApp1
 
                 //phải
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 305.0, color.G / 305.0, color.B / 305.0, 1.0);
+                gl.Color(color.R / 305.0, color.G / 305.0, color.B / 305.0, 0.9);
                 gl.Vertex(A.x, A.y, A.x);
                 gl.Vertex(D.x, D.y, D.z);
                 gl.Vertex(H.x, H.y, H.z);
@@ -280,17 +265,15 @@ namespace WindowsFormsApp1
 
             public override void viewControlPoint(OpenGL gl)
             {
+                gl.LineWidth(10);
                 gl.Begin(OpenGL.GL_LINE_LOOP);
-
-                gl.LineWidth(5);
                 gl.Color(selectedColor.R / 255.0, selectedColor.G / 255.0, selectedColor.B / 255.0, 0);
-
-                gl.Vertex(A.x, A.y, A.z);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(C.x, C.y, C.z);
-                gl.Vertex(G.x, G.y, G.z);
+                gl.Vertex(D.x, D.y, D.z);
                 gl.Vertex(H.x, H.y, H.z);
-
+                gl.Vertex(E.x, E.y, E.z);
+                gl.Vertex(F.x, F.y, F.z);
                 gl.End();
             }
         }
@@ -300,7 +283,6 @@ namespace WindowsFormsApp1
             public Point3d O, A, B, C, D;
             public Pyramid() : base()
             {
-                color = Color.Green;
             }
             public void InitPoint()
             {
@@ -313,10 +295,13 @@ namespace WindowsFormsApp1
             }
             public override void drawObject(OpenGL gl)
             {
+                gl.Enable(OpenGL.GL_BLEND);
+                gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+
                 InitPoint();
                 //đáy
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 255.0, color.G / 255.0, color.B / 255.0, 1.0);
+                gl.Color(color.R / 255.0, color.G / 255.0, color.B / 255.0, 0.9);
                 gl.Vertex(A.x, A.y, A.z);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(C.x, C.y, C.z);
@@ -325,7 +310,7 @@ namespace WindowsFormsApp1
 
                 //trước
                 gl.Begin(OpenGL.GL_POLYGON);
-                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 1.0);
+                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 0.9);
                 gl.Vertex(A.x, A.y, A.z);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(O.x, O.y, O.z);
@@ -333,7 +318,7 @@ namespace WindowsFormsApp1
 
                 //sau
                 gl.Begin(OpenGL.GL_POLYGON);
-                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 1.0);
+                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 0.9);
                 gl.Vertex(C.x, C.y, C.z);
                 gl.Vertex(D.x, D.y, D.z);
                 gl.Vertex(O.x, O.y, O.z);
@@ -341,7 +326,7 @@ namespace WindowsFormsApp1
 
                 //trái
                 gl.Begin(OpenGL.GL_POLYGON);
-                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 1.0);
+                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 0.9);
                 gl.Vertex(B.x, B.y, B.z);
                 gl.Vertex(C.x, C.y, C.z);
                 gl.Vertex(O.x, O.y, O.z);
@@ -349,10 +334,24 @@ namespace WindowsFormsApp1
 
                 //phải
                 gl.Begin(OpenGL.GL_POLYGON);
-                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 1.0);
+                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 0.9);
                 gl.Vertex(D.x, D.y, D.z);
                 gl.Vertex(A.x, A.y, A.z);
                 gl.Vertex(O.x, O.y, O.z);
+                gl.End();
+            }
+
+            public override void viewControlPoint(OpenGL gl)
+            {
+                gl.LineWidth(10);
+                gl.Begin(OpenGL.GL_LINE_LOOP);
+                gl.Color(selectedColor.R / 255.0, selectedColor.G / 255.0, selectedColor.B / 255.0, 0);
+
+                gl.Vertex(A.x, A.y, A.z);
+                gl.Vertex(D.x, D.y, D.z);
+                gl.Vertex(O.x, O.y, O.z);
+                gl.Vertex(B.x, B.y, B.z);
+
                 gl.End();
             }
         }
@@ -362,10 +361,12 @@ namespace WindowsFormsApp1
             public LangTru() : base()
             {
                 Center.x = Center.y = Center.z = 0;
-                color = Color.Brown;
             }
             public override void drawObject(OpenGL gl)
             {
+                gl.Enable(OpenGL.GL_BLEND);
+                gl.BlendFunc(OpenGL.GL_SRC_ALPHA, OpenGL.GL_ONE_MINUS_SRC_ALPHA);
+
                 //đỉnh
                 gl.Begin(OpenGL.GL_POLYGON);
                 gl.Color(color.R / 255.0, color.G / 255.0, color.B / 255.0, 1.0);
@@ -376,7 +377,7 @@ namespace WindowsFormsApp1
 
                 //đáy
                 gl.Begin(OpenGL.GL_POLYGON);
-                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 1.0);
+                gl.Color(color.R / 265.0, color.G / 265.0, color.B / 265.0, 0.9);
                 gl.Vertex(Center.x + Radius, Center.y, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z - Radius);
@@ -384,7 +385,7 @@ namespace WindowsFormsApp1
 
                 //left
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 1.0);
+                gl.Color(color.R / 275.0, color.G / 275.0, color.B / 275.0, 0.9);
                 gl.Vertex(Center.x + Radius, Center.y, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z + Radius);
@@ -393,7 +394,7 @@ namespace WindowsFormsApp1
 
                 //back
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 1.0);
+                gl.Color(color.R / 285.0, color.G / 285.0, color.B / 285.0, 0.9);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z + Radius);
                 gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z + Radius);
@@ -402,11 +403,24 @@ namespace WindowsFormsApp1
 
                 //right
                 gl.Begin(OpenGL.GL_QUADS);
-                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 1.0);
+                gl.Color(color.R / 295.0, color.G / 295.0, color.B / 295.0, 0.9);
                 gl.Vertex(Center.x + Radius, Center.y, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z - Radius);
                 gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z + Radius);
                 gl.Vertex(Center.x + Radius, Center.y, Center.z + Radius);
+                gl.End();
+            }
+            public override void viewControlPoint(OpenGL gl)
+            {
+                gl.LineWidth(10);
+                gl.Begin(OpenGL.GL_LINE_LOOP);
+                gl.Color(selectedColor.R / 255.0, selectedColor.G / 255.0, selectedColor.B / 255.0, 0);
+                
+                gl.Vertex(Center.x + Radius, Center.y, Center.z - Radius);
+                gl.Vertex(Center.x + Radius, Center.y, Center.z + Radius);
+                gl.Vertex(Center.x - Radius, Center.y - Radius, Center.z + Radius);
+                gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z + Radius);
+                gl.Vertex(Center.x - Radius, Center.y + Radius, Center.z - Radius);
                 gl.End();
             }
         }
@@ -423,8 +437,8 @@ namespace WindowsFormsApp1
                 textureObj = new Texture();
                 filepath = "Crate.bmp";
                 textureObj.Create(gl, filepath);
-
             }
+
             public void initPoint()
             {
                 A.x = Center.x + Radius;
@@ -549,6 +563,19 @@ namespace WindowsFormsApp1
                 gl.Vertex(E.x, E.y, E.z);
                 gl.End();
                 gl.Disable(OpenGL.GL_TEXTURE_2D);
+            }
+            public override void viewControlPoint(OpenGL gl)
+            {
+                gl.LineWidth(10);
+                gl.Begin(OpenGL.GL_LINE_LOOP);
+                gl.Color(selectedColor.R / 255.0, selectedColor.G / 255.0, selectedColor.B / 255.0, 0);
+                gl.Vertex(B.x, B.y, B.z);
+                gl.Vertex(C.x, C.y, C.z);
+                gl.Vertex(D.x, D.y, D.z);
+                gl.Vertex(H.x, H.y, H.z);
+                gl.Vertex(E.x, E.y, E.z);
+                gl.Vertex(F.x, F.y, F.z);
+                gl.End();
             }
         }
 
@@ -638,6 +665,19 @@ namespace WindowsFormsApp1
                 gl.Vertex(O.x, O.y, O.z);
                 gl.End();
                 gl.Disable(OpenGL.GL_TEXTURE_2D);
+            }
+            public override void viewControlPoint(OpenGL gl)
+            {
+                gl.LineWidth(10);
+                gl.Begin(OpenGL.GL_LINE_LOOP);
+                gl.Color(selectedColor.R / 255.0, selectedColor.G / 255.0, selectedColor.B / 255.0, 0);
+
+                gl.Vertex(A.x, A.y, A.z);
+                gl.Vertex(D.x, D.y, D.z);
+                gl.Vertex(O.x, O.y, O.z);
+                gl.Vertex(B.x, B.y, B.z);
+
+                gl.End();
             }
         }
 
@@ -757,17 +797,22 @@ namespace WindowsFormsApp1
             }
 
             object3D[numOfObject].Set(pointControl, bankinh);
-            object3D[numOfObject].SetColor(userColor);
+            object3D[numOfObject].SetColor(Color.White);
 
             if (vekhonggian == true) showSpaceGrid(gl, bankinh);
             if (numOfObject > 0)
                 for (int i = 1; i <= numOfObject; i++)
                 {
+                    if (idViewPoint != -1)
+                        object3D[idViewPoint].SetColor(userColor);
+
                     object3D[i].drawObject(gl);
                 }
 
             if (idViewPoint != -1) //Nếu đang vẽ một hình thì hiện control point của hình đó lên
+            {
                 object3D[idViewPoint].viewControlPoint(gl);
+            }
 
             gl.Flush();
         }
@@ -784,47 +829,52 @@ namespace WindowsFormsApp1
 
         private void bt_cube_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             numOfObject += 1;
             numOfCube += 1;
             shShape = 1;
-            lb_NameObject.Items.Add("Cube " + numOfCube);
             listView1.Items.Add("Cube " + numOfCube);
         }
 
         private void pyramid_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             numOfObject += 1;
             numOfPyr += 1;
             shShape = 2;
-            lb_NameObject.Items.Add("Pyramid " + numOfPyr);
+            listView1.Items.Add("Pyramid " + numOfPyr);
         }
 
         private void bt_LangTru_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             numOfObject += 1;
             numOfPrism += 1;
             shShape = 3;
-            lb_NameObject.Items.Add("Prism " + numOfPrism);
+            listView1.Items.Add("Prism " + numOfPrism);
         }
 
         private void bt_texture_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             numOfObject += 1;
             numOfCubeTex += 1;
             shShape = 4;
-            lb_NameObject.Items.Add("Cube Texture " + numOfCubeTex);
+            listView1.Items.Add("Cube Texture " + numOfCubeTex);
         }
 
         private void bt_pyrtexture_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             numOfObject += 1;
             numOfPyrTex += 1;
             shShape = 5;
-            lb_NameObject.Items.Add("Pyramid Texture " + numOfPyrTex);
+            listView1.Items.Add("Pyramid Texture " + numOfPyrTex);
         }
 
         private void bt_DrawSpace_Click(object sender, EventArgs e)
         {
+            idViewPoint = -1;
             if (vekhonggian == false) vekhonggian = true;
             else vekhonggian = false;
         }
@@ -842,12 +892,19 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void listView1_Click(object sender, EventArgs e)
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
-            ListViewItem firstSelectedItem = listView1.SelectedItems[0];
-            firstSelectedItem.UseItemStyleForSubItems = false;
-            firstSelectedItem.SubItems[1].Font = new Font(firstSelectedItem.SubItems[1].Font,
-            firstSelectedItem.SubItems[1].Font.Style | FontStyle.Bold);
+            for (int i = 0; i < listView1.Items.Count; i++)
+            {
+                listView1.Items[i].Font = new Font(listView1.Font, FontStyle.Regular);
+                ListViewItem item = listView1.Items[i];
+                Rectangle itemRect = item.GetBounds(ItemBoundsPortion.Label);
+                if (itemRect.Contains(e.Location))
+                {
+                    idViewPoint = i + 1;
+                    listView1.Items[i].Font = new Font(listView1.Font, FontStyle.Bold);
+                }
+            }
         }
     }
 }
